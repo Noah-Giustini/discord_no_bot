@@ -1,0 +1,14 @@
+[Unit]
+Description=No-Bot Discord Service
+After=network.target
+
+[Service]
+# Replace 'your-username' with your actual linux user
+User=your-username
+WorkingDirectory=/home/your-username/no-as-a-service-bot
+ExecStart=/usr/bin/python3 /home/your-username/no-as-a-service-bot/bot.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
