@@ -51,7 +51,8 @@ async def on_message(message):
     if bot.user.mentioned_in(message):
         async with aiohttp.ClientSession() as session:
             try:
-                async with session.get(API_URL) as response:
+                headers = {'Accept-Encoding': 'identity'}
+                async with session.get(API_URL, headers=headers) as response:
                     if response.status == 200:
                         data = await response.json()
                         reason = data.get("reason", "I can't even find a reason to say no.")
